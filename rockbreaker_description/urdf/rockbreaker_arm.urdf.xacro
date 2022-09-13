@@ -1,0 +1,292 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="rockbreaker_arm">
+  <xacro:arg name="gpu" default="false"/>
+  <xacro:property name="gpu" value="$(arg gpu)" />
+  <xacro:arg name="organize_cloud" default="false"/>
+  <xacro:property name="organize_cloud" value="$(arg organize_cloud)" />
+  <xacro:property name="M_PI" value="3.1415926535897931" />
+  <xacro:property name="damping_value" value="10" />
+  <xacro:property name="friction_value" value="0.1" />
+
+   <!-- Import all Gazebo-customization elements, including Gazebo colors -->
+  <xacro:include filename="$(find rockbreaker_arm_simulator)/rockbreaker_description/urdf/rockbreaker_arm.gazebo" />
+
+  <xacro:macro name="box_inertia" params="x y z mass">
+    <!-- <inertial>
+      <mass value="${mass}" /> -->
+      <inertia ixx="${0.0833333 * mass * (y*y + z*z)}" ixy="0.0" ixz="0.0"
+               iyy="${0.0833333 * mass * (x*x + z*z)}" iyz="0.0"
+               izz="${0.0833333 * mass * (x*x + y*y)}" />
+    <!-- </inertial> -->
+  </xacro:macro>
+
+
+ <!-- Base Fija -->
+  <link name="world" />
+
+  <!-- Base Link -->
+  <joint name="fixed" type="fixed" >
+    <parent link="world" />
+    <child link="rockbreaker_base" />
+     <origin xyz="0 0 -0.2" />
+  </joint>
+  
+
+  <!-- Base Fija -->
+  <link name="rockbreaker_base" >
+    <visual>
+      <origin xyz="0 0 0.2" rpy="0 0 0"/>
+      <geometry>
+        <!--<mesh filename = "file:///home/kyungki/workspace/catkin_ws/src/velodyne_simulator/velodyne_description/meshes/excavator-1.dae"/>-->
+        <mesh filename="package://rockbreaker_arm_simulator/rockbreaker_description/meshes/base_fija.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.2" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://rockbreaker_arm_simulator/rockbreaker_description/meshes/base_fija.dae" scale="1 1 1"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="1.25 1.25 0.5"/>
+      <mass value="1000"/>
+      <xacro:box_inertia x="2.5" y="2.5" z="0.5" mass="1000"/>
+     </inertial>
+  </link>
+  <!-- Base Rotatoria -->
+  <link name="rockbreaker_baserotatoria" >
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 59.7"/>
+      <geometry>
+        <!-- <mesh filename = "file:///home/kyungki/workspace/catkin_ws/src/velodyne_simulator/velodyne_description/meshes/excavator-1.dae"/> -->
+        <mesh filename="package://rockbreaker_arm_simulator/rockbreaker_description/meshes/base_rotatoria.dae" scale="0.1 0.1 0.1"/>
+      </geometry>
+    </visual> 
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 59.7"/>
+      <geometry>
+        <mesh filename="package://rockbreaker_arm_simulator/rockbreaker_description/meshes/base_rotatoria.dae" scale="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0.4" rpy="0 0 59.7"/>
+      <mass value="400"/>
+     <xacro:box_inertia x="1.4" y="1.4" z="1.1" mass="400"/>
+     </inertial>
+  </link>
+
+  <!-- Brazo A -->
+  <link name="brazo_a" > 
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0.6 1.57"/>
+      <geometry> -->
+        <!--<mesh filename = "file:///home/kyungki/workspace/catkin_ws/src/velodyne_simulator/velodyne_description/meshes/excavator-1.dae"/>-->
+        <mesh filename="package://rockbreaker_arm_simulator/rockbreaker_description/meshes/BrazoA_rockbreaker.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0.6 1.57"/>
+      <geometry>
+           <mesh filename="package://rockbreaker_arm_simulator/rockbreaker_description/meshes/BrazoA_rockbreaker.dae" scale="1 1 1"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-0.4 -3.0 3.4" rpy="0 0.6 1.57"/>
+      <mass value="100"/>
+       <xacro:box_inertia x="7.4" y="1" z="1.5" mass="100"/>
+     </inertial>
+  </link>
+
+  <!-- Brazo B -->
+  <link name="brazo_b" >
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0.6 1.57"/>
+      <geometry>
+        <!--<mesh filename = "file:///home/kyungki/workspace/catkin_ws/src/velodyne_simulator/velodyne_description/meshes/excavator-1.dae"/>-->
+        <mesh filename="package://rockbreaker_arm_simulator/rockbreaker_description/meshes/BrazoB_rockbreaker.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0.6 1.57"/>
+      <geometry>
+        <mesh filename="package://rockbreaker_arm_simulator/rockbreaker_description/meshes/BrazoB_rockbreaker.dae" scale="1 1 1"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0.5 -4.0 3.0" rpy="0 0.6 1.57"/>
+      <mass value="80"/>
+     <xacro:box_inertia x="6.0" y="1" z="1.5" mass="80"/>
+     </inertial>
+  </link>
+
+    <!-- Hydraulic Hammer -->
+  <link name="h_hammer" >
+    <visual>
+      <origin xyz="0 0 0" rpy="0 1.57 1.57"/>
+      <geometry> 
+        <!--<mesh filename = "file:///home/kyungki/workspace/catkin_ws/src/velodyne_simulator/velodyne_description/meshes/excavator-1.dae"/>-->
+        <mesh filename="package://rockbreaker_arm_simulator/rockbreaker_description/meshes/Hydraulic_Hammer.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 1.57 1.57"/>
+      <geometry>
+         <mesh filename="package://rockbreaker_arm_simulator/rockbreaker_description/meshes/Hydraulic_Hammer.dae" scale="1 1 1"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-0.4 -1.5 0.2" rpy="0 1.57 1.57"/>
+      <mass value="50"/>
+     <xacro:box_inertia x="1.0" y="1.3" z="2.3" mass="50"/>
+     </inertial>
+  </link> 
+
+   <!-- Hydraulic Hammer Punta -->
+  <!-- <link name="h_punta" >
+    <visual>
+      <origin xyz="0 0 0" rpy="-0.6 0 0"/>
+      <geometry> -->
+        <!--<mesh filename = "file:///home/kyungki/workspace/catkin_ws/src/velodyne_simulator/velodyne_description/meshes/excavator-1.dae"/>-->
+        <!-- <mesh filename="package://rockbreaker_arm_simulator/rockbreaker_description/meshes/Hydraulic_Hammer.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="-0.6 0 0"/>
+      <geometry>
+        <mesh filename="package://rockbreaker_arm_simulator/rockbreaker_description/meshes/Hydraulic_Hammer.dae" scale="1 1 1"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0"/>
+      <mass value="5"/>
+      <inertia ixx="3.0" ixy="0.0" ixz="0.0"
+               iyy="3.0" iyz="0.0" 
+               izz="3.0" />
+    </inertial>
+  </link> --> 
+
+  <joint name="joint_base_rockbreaker" type="revolute" >
+    <axis xyz="0 0 1"/>
+    <limit effort="1000000" lower="-1.57" upper="1.57" velocity="100"/>
+    <parent link="rockbreaker_base" />
+    <child link="rockbreaker_baserotatoria"  />
+    <origin xyz="1.1 1.071 1.1 " rpy="0 0 0" />
+    <dynamics damping="${damping_value}" friction="${friction_value}"/>
+  </joint>
+
+  <joint name="joint_brazoa" type="revolute" >
+    <axis xyz="1 0 0"/>
+    <limit effort="10" lower="-3.1415" upper="3.1415" velocity="1"/>
+    <parent link="rockbreaker_baserotatoria" />
+    <child link="brazo_a" />
+    <origin xyz="0.375 0.05 1.2" rpy="0 0 0" /> 
+    <dynamics damping="${damping_value}" friction="${friction_value}"/>
+  </joint>
+
+  <joint name="joint_brazob" type="revolute" >
+    <axis xyz="1 0 0"/>
+    <limit effort="10" lower="-3.1415" upper="3.1415" velocity="1"/>
+    <parent link="brazo_a" />
+    <child link="brazo_b" />
+    <origin xyz="-0.9 -6.75 4.6" rpy="0 0 0" /> 
+    <dynamics damping="${damping_value}" friction="${friction_value}"/>
+  </joint>
+
+  <joint name="joint_hammer" type="revolute" >
+    <axis xyz="1 0 0"/>
+    <limit effort="10" lower="0" upper="3.1415" velocity="1"/>
+    <parent link="brazo_b" />
+    <child link="h_hammer" />
+    <origin xyz="0.875 -6.82 4.68" rpy="0 0 0" />
+    <dynamics damping="${damping_value}" friction="${friction_value}"/> 
+  </joint>
+
+  <!-- <joint name="joint_punta" type="revolute" >
+    <axis xyz="0 0 1"/>
+    <limit effort="100000.0" lower="0.0" upper="3.1415" velocity="10000.0"/>
+    <parent link="h_hammer" />
+    <child link="h_punta" />
+    <origin xyz="0.425 -1.65 -1.88" rpy="0 0 0" /> 
+  </joint> -->
+
+  <transmission name="tran1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint_base_rockbreaker">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor1">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <!-- <transmission name="tran2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint_brazoa">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor2">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran3">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint_brazob">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor3">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission> 
+
+   <transmission name="tran4">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint_hammer">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor4">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission> -->
+
+  <!--
+  <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro"/>
+  <xacro:VLP-16 parent="excavator_base" name="velodyne" topic="/velodyne_points" organize_cloud="${organize_cloud}" hz="10" samples="440" gpu="${gpu}" >
+    <origin xyz="1 2.7 1.2" rpy="0 0 0" />
+  </xacro:VLP-16>
+  -->
+
+  <!-- <xacro:include filename=rockbreaker)/urdf/HDL-32E.urdf.xacro"/> -->
+  <!--<xacro:include filename="$(find velodyne_description)/urdf/camera.urdf.xacro"/>-->
+  <!-- <xacro:include filename=rockbreaker)/urdf/stereo_camera.urdf.xacro"/>
+  <xacro:include filename=rockbreaker)/urdf/VLP-16.urdf.xacro"/>
+
+  <xacro:stereo_camera_sensor parent="excavator_base" name="camera_front" >
+    <origin xyz="0.8 0 1.5" rpy="0 0 ${-M_PI}" />
+  </xacro:stereo_camera_sensor> -->
+ 
+  <!--
+  <xacro:HDL-32E parent="excavator_base" name="velodyne_top" topic="/top/velodyne_points2" organize_cloud="${organize_cloud}" hz="10" samples="220" min_angle="${-M_PI}" max_angle="${M_PI}" gpu="${gpu}" >
+    <origin xyz="0 0 2.8" rpy="0 0 0" />
+  </xacro:HDL-32E>
+
+  <xacro:camera_sensor parent="excavator_base" name="camera_left_front" >
+    <origin xyz="-0.8 2.7 1.2" rpy="0 0 ${M_PI/2}" />
+  </xacro:camera_sensor>
+
+
+  <xacro:camera_sensor parent="excavator_base" name="camera_left_back" >
+    <origin xyz="-0.8 -3 1.2" rpy="0 0 ${-M_PI/2}" />
+  </xacro:camera_sensor>
+
+  <xacro:camera_sensor parent="excavator_base" name="camera_right_back" >
+    <origin xyz="0.8 -3 1.2" rpy="0 0 ${-M_PI/2}" />
+  </xacro:camera_sensor>
+  -->
+   <!-- ros_control plugin -->
+  
+</robot>
