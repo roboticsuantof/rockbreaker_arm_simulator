@@ -1,0 +1,7 @@
+<launch>
+  <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
+  <include file="$(find rockbreaker_arm_simulator)/rockbreaker_arm_gazebo/launch/empty_world.launch">
+    <arg name="world_name" value="$(find rockbreaker_arm_simulator)/rockbreaker_arm_gazebo/worlds/rockbreaker_arm_world"/>
+    <!-- more default parameters can be changed here -->
+  </include>
+</launch>

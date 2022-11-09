@@ -1,0 +1,57 @@
+#rockbreaker_arm:
+  joint_limits:
+    joint_base_rockbreaker:
+      has_position_limits: true
+      min_position: -1.57
+      max_position: 1.57
+      has_velocity_limits: true
+      max_velocity: 1000.0
+      has_acceleration_limits: false
+      max_acceleration: 0.0
+      has_jerk_limits: false
+      max_jerk: 1000000.0
+      has_effort_limits: true
+      max_effort: 1000000.0
+      min_effort: -1.0
+
+    joint_brazoa:
+      has_position_limits: true
+      min_position: -3.1415
+      max_position: 3.1415
+      has_velocity_limits: true
+      max_velocity: 1000.0
+      has_acceleration_limits: false
+      max_acceleration: 0.0
+      has_jerk_limits: false
+      max_jerk: 1000000.0
+      has_effort_limits: true
+      max_effort: 1000000.0
+      min_effort: -1.0
+
+    joint_brazob:
+      has_position_limits: true
+      min_position: -3.1415
+      max_position: 3.1415
+      has_velocity_limits: true
+      max_velocity: 1000.0
+      has_acceleration_limits: false
+      max_acceleration: 0.0
+      has_jerk_limits: false
+      max_jerk: 100000.0
+      has_effort_limits: true
+      max_effort: 1000000.0
+      min_effort: -1.0
+
+    joint_hammer:
+      has_position_limits: true
+      min_position: -3.1415
+      max_position: 3.1415
+      has_velocity_limits: true
+      max_velocity: 1000.0
+      has_acceleration_limits: false
+      max_acceleration: 0.0
+      has_jerk_limits: true
+      max_jerk: 1000000.0
+      has_effort_limits: true
+      max_effort: 1000000.0
+      min_effort: -1.0

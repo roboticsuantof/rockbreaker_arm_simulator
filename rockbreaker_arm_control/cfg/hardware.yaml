@@ -1,0 +1,8 @@
+tr1:
+  hardware_interface:
+     loop_hz: 50 # hz
+     joints:
+      - joint_base_rockbreaker
+      - joint_brazoa
+      - joint_brazob
+      - joint_hammer

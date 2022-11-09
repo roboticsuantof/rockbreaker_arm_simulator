@@ -1,17 +1,15 @@
 <launch>
 
   <!-- Load joint controller configurations from YAML file to parameter server -->
-  <rosparam file="$(find rockbreaker_arm_simulator)/rockbreaker_arm_control/cfg/rockbreaker_arm.yaml" command="load"/>
+  <rosparam file="$(find novtest)/config/ros_controllers.yaml" command="load"/>
 
   <!-- load the controllers -->
   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
-	output="screen" ns="/rockbreaker_arm" args= " joint_state_controller
-					                                     joint1_position_controller
-                                                 "/>
+	output="screen"  args= " joint_state_controller arm_controller base_controller "/>
 
   <!--convert joint states to TF transforms for rviz, etc -->
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
-    <remap from="/joint_states" to="/rockbreaker_arm/joint_states" />
+    <remap from="/joint_states" to="/joint_states" />
   </node>
 
 </launch>

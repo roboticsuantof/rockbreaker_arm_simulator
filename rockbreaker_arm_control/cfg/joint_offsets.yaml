@@ -1,0 +1,12 @@
+tr1:
+  joint_offsets:
+    joint_base_rockbreaker: 0.0
+    joint_brazoa: -0.0
+    joint_brazob: -0.0
+    joint_hammer: -0.0
+  joint_read_ratio:
+    joint_base_rockbreaker: 300.0
+    joint_brazoa: 300.0
+    joint_brazob: 300.0
+    joint_hammer: 300.076923077
+   

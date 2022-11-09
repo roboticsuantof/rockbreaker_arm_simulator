@@ -2,16 +2,19 @@ cmake_minimum_required(VERSION 3.0.2)
 project(rockbreaker_arm_simulator)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-# add_compile_options(-std=c++11)
-
+# add_compile_options(-std=c++14)
+set(CMAKE_CXX_STANDARD 17)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
+  gazebo_plugins
+  gazebo_ros
   roscpp
   rospy
-  std_msgs
+  ainstein_radar_msgs
 )
+find_package (gazebo REQUIRED)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -93,6 +96,7 @@ find_package(catkin REQUIRED COMPONENTS
 #   cfg/DynReconf2.cfg
 # )
 
+
 ###################################
 ## catkin specific configuration ##
 ###################################
@@ -103,11 +107,14 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
+  INCLUDE_DIRS include
+  CATKIN_DEPENDS gazebo_plugins gazebo_ros roscpp
+  )
 #  INCLUDE_DIRS include
 #  LIBRARIES rockbreaker_arm_simulator
 #  CATKIN_DEPENDS roscpp rospy std_msgs
 #  DEPENDS system_lib
-)
+
 
 ###########
 ## Build ##
@@ -134,6 +141,8 @@ include_directories(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/rockbreaker_arm_simulator_node.cpp)
+
+
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -191,6 +200,15 @@ include_directories(
 #   # myfile2
 #   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 # )
+
+link_directories(${GAZEBO_LIBRARY_DIRS})
+include_directories(include)
+include_directories( ${catkin_INCLUDE_DIRS}
+  ${Boost_INCLUDE_DIR}
+  ${GAZEBO_INCLUDE_DIRS}
+  )
+add_library(${PROJECT_NAME} src/radar_plugin.cpp)
+
 
 #############
 ## Testing ##

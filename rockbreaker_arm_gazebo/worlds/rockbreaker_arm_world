@@ -1,0 +1,2384 @@
+<sdf version='1.7'>
+  <world name='default'>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+      <spot>
+        <inner_angle>0</inner_angle>
+        <outer_angle>0</outer_angle>
+        <falloff>0</falloff>
+      </spot>
+    </light>
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <contact>
+              <collide_bitmask>65535</collide_bitmask>
+              <ode/>
+            </contact>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <wind/>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    <model name='rk_arm_world'>
+      <model name='Plataform'>
+        <static>1</static>
+        <link name='link_0'>
+          <inertial>
+            <mass>1</mass>
+            <inertia>
+              <ixx>0.166667</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.166667</iyy>
+              <iyz>0</iyz>
+              <izz>0.166667</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <pose>3e-06 4e-06 0 0 -0 0</pose>
+          <self_collide>1</self_collide>
+          <enable_wind>0</enable_wind>
+          <kinematic>0</kinematic>
+          <gravity>1</gravity>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/brayan/catkin_ws/models/platform.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Grey</name>
+              </script>
+              <shader type='pixel'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/home/brayan/catkin_ws/models/platform.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+        </link>
+        <static>0</static>
+        <allow_auto_disable>1</allow_auto_disable>
+        <pose>-5.63878 -0.07583 -15.3471 0 -0 0</pose>
+      </model>
+      <model name='baranda'>
+        <static>1</static>
+        <link name='link_1'>
+          <inertial>
+            <mass>1</mass>
+            <inertia>
+              <ixx>0.166667</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.166667</iyy>
+              <iyz>0</iyz>
+              <izz>0.166667</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <pose>0 -0 5e-06 0 -0 0</pose>
+          <gravity>1</gravity>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+          <enable_wind>0</enable_wind>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Yellow</name>
+              </script>
+              <shader type='pixel'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+        </link>
+        <static>0</static>
+        <allow_auto_disable>1</allow_auto_disable>
+        <pose>-1.9502 1.18962 1.51516 0 -0 0</pose>
+      </model>
+      <model name='baranda_clone'>
+        <static>1</static>
+        <link name='link_1'>
+          <inertial>
+            <mass>1</mass>
+            <inertia>
+              <ixx>0.166667</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.166667</iyy>
+              <iyz>0</iyz>
+              <izz>0.166667</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <pose>0 -0 5e-06 0 -0 0</pose>
+          <gravity>1</gravity>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+          <enable_wind>0</enable_wind>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Yellow</name>
+              </script>
+              <shader type='pixel'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+        </link>
+        <static>0</static>
+        <allow_auto_disable>1</allow_auto_disable>
+        <pose>0.431867 1.19703 1.51973 0 -0 0</pose>
+      </model>
+      <model name='baranda_clone_0'>
+        <static>1</static>
+        <link name='link_1'>
+          <inertial>
+            <mass>1</mass>
+            <inertia>
+              <ixx>0.166667</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.166667</iyy>
+              <iyz>0</iyz>
+              <izz>0.166667</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <pose>0 -0 5e-06 0 -0 0</pose>
+          <gravity>1</gravity>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+          <enable_wind>0</enable_wind>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Yellow</name>
+              </script>
+              <shader type='pixel'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+        </link>
+        <static>0</static>
+        <allow_auto_disable>1</allow_auto_disable>
+        <pose>2.8251 1.20455 1.51774 0 -0 0</pose>
+      </model>
+      <model name='baranda_clone_1'>
+        <static>1</static>
+        <link name='link_1'>
+          <inertial>
+            <mass>1</mass>
+            <inertia>
+              <ixx>0.166667</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.166667</iyy>
+              <iyz>0</iyz>
+              <izz>0.166667</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <pose>0 -0 5e-06 0 -0 0</pose>
+          <gravity>1</gravity>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+          <enable_wind>0</enable_wind>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Yellow</name>
+              </script>
+              <shader type='pixel'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+        </link>
+        <static>0</static>
+        <allow_auto_disable>1</allow_auto_disable>
+        <pose>5.27138 1.20733 1.51424 0 -0 0</pose>
+      </model>
+      <model name='baranda_clone_2'>
+        <static>1</static>
+        <link name='link_1'>
+          <inertial>
+            <mass>1</mass>
+            <inertia>
+              <ixx>0.166667</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.166667</iyy>
+              <iyz>0</iyz>
+              <izz>0.166667</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <pose>0 -0 5e-06 0 -0 0</pose>
+          <gravity>1</gravity>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+          <enable_wind>0</enable_wind>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Yellow</name>
+              </script>
+              <shader type='pixel'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+        </link>
+        <static>0</static>
+        <allow_auto_disable>1</allow_auto_disable>
+        <pose>7.68713 1.20944 1.51814 0 -0 0</pose>
+      </model>
+      <model name='baranda_clone_3'>
+        <static>1</static>
+        <link name='link_1'>
+          <inertial>
+            <mass>1</mass>
+            <inertia>
+              <ixx>0.166667</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.166667</iyy>
+              <iyz>0</iyz>
+              <izz>0.166667</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <pose>0 -0 5e-06 0 -0 0</pose>
+          <gravity>1</gravity>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+          <enable_wind>0</enable_wind>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Yellow</name>
+              </script>
+              <shader type='pixel'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+        </link>
+        <static>0</static>
+        <allow_auto_disable>1</allow_auto_disable>
+        <pose>8.9377 2.43179 1.52902 0 -0 1.57081</pose>
+      </model>
+      <model name='baranda_clone_3_clone'>
+        <static>1</static>
+        <link name='link_1'>
+          <inertial>
+            <mass>1</mass>
+            <inertia>
+              <ixx>0.166667</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.166667</iyy>
+              <iyz>0</iyz>
+              <izz>0.166667</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <pose>0 -0 5e-06 0 -0 0</pose>
+          <gravity>1</gravity>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+          <enable_wind>0</enable_wind>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Yellow</name>
+              </script>
+              <shader type='pixel'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+        </link>
+        <static>0</static>
+        <allow_auto_disable>1</allow_auto_disable>
+        <pose>8.94938 4.88328 1.54665 0 -0 1.57081</pose>
+      </model>
+      <model name='baranda_clone_3_clone_0'>
+        <static>1</static>
+        <link name='link_1'>
+          <inertial>
+            <mass>1</mass>
+            <inertia>
+              <ixx>0.166667</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.166667</iyy>
+              <iyz>0</iyz>
+              <izz>0.166667</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <pose>0 -0 5e-06 0 -0 0</pose>
+          <gravity>1</gravity>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+          <enable_wind>0</enable_wind>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Yellow</name>
+              </script>
+              <shader type='pixel'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+        </link>
+        <static>0</static>
+        <allow_auto_disable>1</allow_auto_disable>
+        <pose>8.9276 7.3547 1.529 0 -0 1.57081</pose>
+      </model>
+      <model name='baranda_clone_3_clone_1'>
+        <static>1</static>
+        <link name='link_1'>
+          <inertial>
+            <mass>1</mass>
+            <inertia>
+              <ixx>0.166667</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.166667</iyy>
+              <iyz>0</iyz>
+              <izz>0.166667</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <pose>0 -0 5e-06 0 -0 0</pose>
+          <gravity>1</gravity>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+          <enable_wind>0</enable_wind>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Yellow</name>
+              </script>
+              <shader type='pixel'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+        </link>
+        <static>0</static>
+        <allow_auto_disable>1</allow_auto_disable>
+        <pose>8.92866 9.73607 1.529 0 -0 1.57081</pose>
+      </model>
+      <model name='baranda_clone_3_clone_2'>
+        <static>1</static>
+        <link name='link_1'>
+          <inertial>
+            <mass>1</mass>
+            <inertia>
+              <ixx>0.166667</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.166667</iyy>
+              <iyz>0</iyz>
+              <izz>0.166667</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <pose>0 -0 5e-06 0 -0 0</pose>
+          <gravity>1</gravity>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+          <enable_wind>0</enable_wind>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Yellow</name>
+              </script>
+              <shader type='pixel'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+        </link>
+        <static>0</static>
+        <allow_auto_disable>1</allow_auto_disable>
+        <pose>8.9281 12.3153 1.48572 0 -0 1.57081</pose>
+      </model>
+      <model name='baranda_clone_3_clone_3'>
+        <static>1</static>
+        <link name='link_1'>
+          <inertial>
+            <mass>1</mass>
+            <inertia>
+              <ixx>0.166667</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.166667</iyy>
+              <iyz>0</iyz>
+              <izz>0.166667</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <pose>0 -0 5e-06 0 -0 0</pose>
+          <gravity>1</gravity>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+          <enable_wind>0</enable_wind>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Yellow</name>
+              </script>
+              <shader type='pixel'>
+                <normal_map>__default__</normal_map>
+              </shader>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+        </link>
+        <static>0</static>
+        <allow_auto_disable>1</allow_auto_disable>
+        <pose>8.92817 14.8242 1.48702 0 -0 1.57081</pose>
+      </model>
+      <model name='containers'>
+        <static>1</static>
+        <link name='link_2'>
+          <inertial>
+            <mass>1</mass>
+            <inertia>
+              <ixx>0.166667</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.166667</iyy>
+              <iyz>0</iyz>
+              <izz>0.166667</izz>
+            </inertia>
+          </inertial>
+          <pose>-5e-06 1e-06 0 0 -0 0</pose>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/media/brayan/brayan/Containers.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Blue</name>
+              </script>
+              <shader type='pixel'/>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/media/brayan/brayan/Containers.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+          <self_collide>0</self_collide>
+          <enable_wind>0</enable_wind>
+          <kinematic>0</kinematic>
+        </link>
+        <static>0</static>
+        <allow_auto_disable>1</allow_auto_disable>
+        <pose>-11.0221 2.2401 0.421599 0 0 -1.56399</pose>
+      </model>
+      <model name='my_ground_plane'>
+        <static>1</static>
+        <link name='link'>
+          <collision name='collision'>
+            <geometry>
+              <plane>
+                <normal>0 0 1</normal>
+                <size>100 100</size>
+              </plane>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>100</mu>
+                  <mu2>50</mu2>
+                </ode>
+                <torsional>
+                  <ode/>
+                </torsional>
+              </friction>
+              <contact>
+                <ode/>
+              </contact>
+              <bounce/>
+            </surface>
+            <max_contacts>10</max_contacts>
+          </collision>
+          <visual name='visual'>
+            <cast_shadows>0</cast_shadows>
+            <geometry>
+              <plane>
+                <normal>0 0 1</normal>
+                <size>100 100</size>
+              </plane>
+            </geometry>
+            <material>
+              <script>
+                <uri>/home/brayan/catkin_ws/src/WorldMine/ground/my_ground_plane.material</uri>
+                <name>MyGroundPlane/Image</name>
+              </script>
+            </material>
+          </visual>
+          <self_collide>0</self_collide>
+          <enable_wind>0</enable_wind>
+          <kinematic>0</kinematic>
+        </link>
+        <pose>-4.85068 3.27162 -15.3471 0 -0 0</pose>
+      </model>
+      <model name='poste'>
+      <static>1</static>
+        <link name='link_3'>
+          <inertial>
+            <mass>1</mass>
+            <inertia>
+              <ixx>0.166667</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.166667</iyy>
+              <iyz>0</iyz>
+              <izz>0.166667</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <pose>-5e-06 -2e-06 5e-06 0 -0 0</pose>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/media/brayan/brayan/Iluminaria.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/White</name>
+              </script>
+              <shader type='pixel'/>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/media/brayan/brayan/Iluminaria.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+          <self_collide>0</self_collide>
+          <enable_wind>0</enable_wind>
+          <kinematic>0</kinematic>
+          <static>1</static>
+        </link>
+        <static>0</static>
+        <allow_auto_disable>1</allow_auto_disable>
+        <pose>-6.84734 16.9539 2.80504 0 -0 2.70045</pose>
+      </model>
+     <model name='poste_clone_0'>
+      <static>1</static>
+        <link name='link_3'>
+          <inertial>
+            <mass>1</mass>
+            <inertia>
+              <ixx>0.166667</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.166667</iyy>
+              <iyz>0</iyz>
+              <izz>0.166667</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <pose>-5e-06 -2e-06 5e-06 0 -0 0</pose>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/media/brayan/brayan/Iluminaria.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/White</name>
+              </script>
+              <shader type='pixel'/>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/media/brayan/brayan/Iluminaria.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+          <self_collide>0</self_collide>
+          <enable_wind>0</enable_wind>
+          <kinematic>0</kinematic>
+          <static>1</static>
+        </link>
+        <static>0</static>
+        <allow_auto_disable>1</allow_auto_disable>
+        <pose>-6.25675 1.976 2.80499 0 -0 -2.40859</pose>
+      </model>
+      <model name='poste_clone_1'>
+      <static>1</static>
+        <link name='link_3'>
+          <inertial>
+            <mass>1</mass>
+            <inertia>
+              <ixx>0.166667</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.166667</iyy>
+              <iyz>0</iyz>
+              <izz>0.166667</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <pose>-5e-06 -2e-06 5e-06 0 -0 0</pose>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/media/brayan/brayan/Iluminaria.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/White</name>
+              </script>
+              <shader type='pixel'/>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/media/brayan/brayan/Iluminaria.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+          <self_collide>0</self_collide>
+          <enable_wind>0</enable_wind>
+          <kinematic>0</kinematic>
+          <static>1</static>
+        </link>
+        <static>0</static>
+        <allow_auto_disable>1</allow_auto_disable>
+        <pose>5.7053 4.30583 2.80499 0 -0 2.36136</pose>
+      </model>
+      <model name='poste_clone_2'>
+      <static>1</static>
+        <link name='link_3'>
+          <inertial>
+            <mass>1</mass>
+            <inertia>
+              <ixx>0.166667</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.166667</iyy>
+              <iyz>0</iyz>
+              <izz>0.166667</izz>
+            </inertia>
+            <pose>0 0 0 0 -0 0</pose>
+          </inertial>
+          <pose>-5e-06 -2e-06 5e-06 0 -0 0</pose>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/media/brayan/brayan/Iluminaria.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/White</name>
+              </script>
+              <shader type='pixel'/>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/media/brayan/brayan/Iluminaria.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+          <self_collide>0</self_collide>
+          <enable_wind>0</enable_wind>
+          <kinematic>0</kinematic>
+          <static>1</static>
+        </link>
+        <static>0</static>
+        <allow_auto_disable>1</allow_auto_disable>
+        <pose>5.59851 15.2063 2.80499 0 -0 -2.45231</pose>
+      </model>
+      <model name='truck'>
+        <static>1</static>
+        <link name='link_4'>
+          <inertial>
+            <mass>1</mass>
+            <inertia>
+              <ixx>0.166667</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.166667</iyy>
+              <iyz>0</iyz>
+              <izz>0.166667</izz>
+            </inertia>
+          </inertial>
+          <pose>-0 -1e-06 0 0 -0 0</pose>
+          <visual name='visual'>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/media/brayan/brayan/truck.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <material>
+              <lighting>1</lighting>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Yellow</name>
+              </script>
+              <shader type='pixel'/>
+            </material>
+            <transparency>0</transparency>
+            <cast_shadows>1</cast_shadows>
+          </visual>
+          <collision name='collision'>
+            <laser_retro>0</laser_retro>
+            <max_contacts>10</max_contacts>
+            <pose>0 0 0 0 -0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>/media/brayan/brayan/truck.stl</uri>
+                <scale>1 1 1</scale>
+              </mesh>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1</mu>
+                  <mu2>1</mu2>
+                  <fdir1>0 0 0</fdir1>
+                  <slip1>0</slip1>
+                  <slip2>0</slip2>
+                </ode>
+                <torsional>
+                  <coefficient>1</coefficient>
+                  <patch_radius>0</patch_radius>
+                  <surface_radius>0</surface_radius>
+                  <use_patch_radius>1</use_patch_radius>
+                  <ode>
+                    <slip>0</slip>
+                  </ode>
+                </torsional>
+              </friction>
+              <bounce>
+                <restitution_coefficient>0</restitution_coefficient>
+                <threshold>1e+06</threshold>
+              </bounce>
+              <contact>
+                <collide_without_contact>0</collide_without_contact>
+                <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                <collide_bitmask>1</collide_bitmask>
+                <ode>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                  <max_vel>0.01</max_vel>
+                  <min_depth>0</min_depth>
+                </ode>
+                <bullet>
+                  <split_impulse>1</split_impulse>
+                  <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                  <soft_cfm>0</soft_cfm>
+                  <soft_erp>0.2</soft_erp>
+                  <kp>1e+13</kp>
+                  <kd>1</kd>
+                </bullet>
+              </contact>
+            </surface>
+          </collision>
+          <self_collide>0</self_collide>
+          <enable_wind>0</enable_wind>
+          <kinematic>0</kinematic>
+        </link>
+        <static>0</static>
+        <allow_auto_disable>1</allow_auto_disable>
+        <pose>-5.29016 13.9739 -0.573577 -0.129376 -0 -1.60694</pose>
+      </model>
+      <static>0</static>
+      <allow_auto_disable>1</allow_auto_disable>
+      <pose>3.37501 -8.19596 15.3471 0 -0 0</pose>
+    </model>
+    <state world_name='default'>
+      <sim_time>11 404000000</sim_time>
+      <real_time>11 456227086</real_time>
+      <wall_time>1666048356 707243689</wall_time>
+      <iterations>11404</iterations>
+      <model name='ground_plane'>
+        <pose>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='rk_arm_world'>
+        <pose>3.37501 -8.19596 15.3471 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <model name='Plataform'>
+          <pose>-2.26377 -8.27179 0 0 -0 0</pose>
+          <scale>1 1 1</scale>
+          <link name='link_0'>
+            <pose>-2.26377 -8.27179 0 0 -0 0</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='baranda'>
+          <pose>1.68999 -7.00634 16.9023 0 -0 0</pose>
+          <scale>1 1 1</scale>
+          <link name='link_1'>
+            <pose>1.68999 -7.00634 16.9023 0 -0 0</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='baranda_clone'>
+          <pose>3.80688 -6.99893 16.8668 0 -0 0</pose>
+          <scale>1 1 1</scale>
+          <link name='link_1'>
+            <pose>3.80688 -6.99893 16.8668 0 -0 0</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='baranda_clone_0'>
+          <pose>6.20011 -6.99141 16.8648 0 -0 0</pose>
+          <scale>1 1 1</scale>
+          <link name='link_1'>
+            <pose>6.20011 -6.99141 16.8648 0 -0 0</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='baranda_clone_1'>
+          <pose>8.64639 -6.98863 16.8613 0 -0 0</pose>
+          <scale>1 1 1</scale>
+          <link name='link_1'>
+            <pose>8.64639 -6.98863 16.8613 0 -0 0</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='baranda_clone_2'>
+          <pose>11.0621 -6.98652 16.8652 0 -0 0</pose>
+          <scale>1 1 1</scale>
+          <link name='link_1'>
+            <pose>11.0621 -6.98652 16.8652 0 -0 0</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='baranda_clone_3'>
+          <pose>12.3127 -5.76417 16.8761 0 -0 1.57081</pose>
+          <scale>1 1 1</scale>
+          <link name='link_1'>
+            <pose>12.3127 -5.76417 16.8761 0 -0 1.57081</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='baranda_clone_3_clone'>
+          <pose>12.3244 -3.31268 16.8938 0 -0 1.57081</pose>
+          <scale>1 1 1</scale>
+          <link name='link_1'>
+            <pose>12.3244 -3.31268 16.8938 0 -0 1.57081</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='baranda_clone_3_clone_0'>
+          <pose>12.3026 -0.84126 16.8761 0 -0 1.57081</pose>
+          <scale>1 1 1</scale>
+          <link name='link_1'>
+            <pose>12.3026 -0.84126 16.8761 0 -0 1.57081</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='baranda_clone_3_clone_1'>
+          <pose>12.3037 1.54011 16.8761 0 -0 1.57081</pose>
+          <scale>1 1 1</scale>
+          <link name='link_1'>
+            <pose>12.3037 1.54011 16.8761 0 -0 1.57081</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='baranda_clone_3_clone_2'>
+          <pose>12.3031 4.11934 16.8328 0 -0 1.57081</pose>
+          <scale>1 1 1</scale>
+          <link name='link_1'>
+            <pose>12.3031 4.11934 16.8328 0 -0 1.57081</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='baranda_clone_3_clone_3'>
+          <pose>12.3252 6.32824 16.9241 0 -0 1.57081</pose>
+          <scale>1 1 1</scale>
+          <link name='link_1'>
+            <pose>12.3252 6.32824 16.9241 0 -0 1.57081</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='containers'>Create a Gazebo model that includes a ROS depth camera plugin
+          <link name='link_2'>
+            <pose>-7.64709 -5.95585 15.7687 0 0 -1.56399</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='my_ground_plane'>
+          <pose>-1.47567 -4.92434 0 0 -0 0</pose>
+          <scale>1 1 1</scale>
+          <link name='link'>
+            <pose>-1.47567 -4.92434 0 0 -0 0</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='poste'>
+          <pose>-3.47233 8.75794 18.1521 0 -0 2.70045</pose>
+          <scale>1 1 1</scale>
+          <link name='link_3'>
+            <pose>-3.47233 8.75794 18.1521 0 -0 2.70045</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='poste_clone'>
+          <pose>-36.1751 -123.301 18.1521 0 -0 2.70045</pose>
+          <scale>1 1 1</scale>
+          <link name='link_3'>
+            <pose>-36.1751 -123.301 18.1521 0 -0 2.70045</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='poste_clone_0'>
+          <pose>-2.88174 -6.21996 18.1521 0 0 -2.40859</pose>
+          <scale>1 1 1</scale>
+          <link name='link_3'>
+            <pose>-2.88174 -6.21995 18.1521 0 0 -2.40859</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='poste_clone_1'>
+          <pose>9.08031 -3.89013 18.1521 0 -0 2.36136</pose>
+          <scale>1 1 1</scale>
+          <link name='link_3'>
+            <pose>9.08032 -3.89013 18.1521 0 -0 2.36136</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='poste_clone_2'>
+          <pose>8.97352 7.01034 18.1521 0 0 -2.45231</pose>
+          <scale>1 1 1</scale>
+          <link name='link_3'>
+            <pose>8.97352 7.01035 18.1521 0 0 -2.45231</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='truck'>
+          <pose>-1.91515 5.77794 14.7735 -0.129376 -0 -1.60694</pose>
+          <scale>1 1 1</scale>
+          <link name='link_4'>
+            <pose>-1.91515 5.77794 14.7735 -0.129376 -0 -1.60694</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+      </model>
+      <light name='sun'>
+        <pose>0 0 10 0 -0 0</pose>
+      </light>
+    </state>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>41.7309 -54.4368 37.9025 0 0.401796 2.1002</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+    <model name="kinect1">
+        <static>true</static>
+          <pose>-1.556211 -5.006576 19 0 0 0.564853</pose>
+          <link name="link_camera">
+            <inertial>
+              <mass>0.1</mass>
+            </inertial>
+            <collision name="collision">
+              <geometry>
+                <box>
+                  <size>0.073000 0.276000 0.072000</size>
+                </box>
+              </geometry>
+            </collision>
+            <visual name="visual">
+              <geometry>
+                <mesh>
+                  <uri>model://kinect/meshes/kinect.dae</uri>
+                </mesh>
+              </geometry>
+            </visual>
+            <sensor name="camera" type="depth">
+              <plugin name="camera_plugin" filename="libgazebo_ros_openni_kinect.so">
+                <baseline>0.2</baseline>
+                <alwaysOn>true</alwaysOn>
+                <!-- Keep this zero, update_rate in the parent <sensor> tag
+                  will control the frame rate. -->
+                <updateRate>0.0</updateRate>
+                <cameraName>camera1_ir</cameraName>
+                <imageTopicName>/camera1/color/image_raw</imageTopicName>
+                <cameraInfoTopicName>/camera1/color/camera_info</cameraInfoTopicName>
+                <depthImageTopicName>/camera1/depth/image_raw</depthImageTopicName>
+                <depthImageCameraInfoTopicName>/camera1/depth/camera_info</depthImageCameraInfoTopicName>
+                <pointCloudTopicName>/camera1/depth/points</pointCloudTopicName>
+                <frameName>camera1_link</frameName>
+                <pointCloudCutoff>0.5</pointCloudCutoff>
+                <pointCloudCutoffMax>25.0</pointCloudCutoffMax>
+                <distortionK1>0</distortionK1>
+                <distortionK2>0</distortionK2>
+                <distortionK3>0</distortionK3>
+                <distortionT1>0</distortionT1>
+                <distortionT2>0</distortionT2>
+                <CxPrime>0</CxPrime>
+                <Cx>0</Cx>
+                <Cy>0</Cy>
+                <focalLength>0</focalLength>
+                <hackBaseline>0</hackBaseline>
+              </plugin>
+              <update_rate>20</update_rate>
+              <camera>
+                <horizontal_fov>1.39626</horizontal_fov>
+                <image>
+                  <width>640</width>
+                  <height>480</height>
+                  <format>R8G8B8</format>
+                </image>
+                <clip>
+                  <near>0.05</near>
+                  <far>30</far>
+                </clip>
+              </camera>
+            </sensor>
+          </link>
+      </model>
+      <model name="kinect2">
+          <static>true</static>
+            <pose>10.147451 8.166531 19 0 0 -2.663270</pose>
+            <link name="link_camera">
+              <inertial>
+                <mass>0.1</mass>
+              </inertial>
+              <collision name="collision">
+                <geometry>
+                  <box>
+                    <size>0.073000 0.276000 0.072000</size>
+                  </box>
+                </geometry>
+              </collision>
+              <visual name="visual">
+                <geometry>
+                  <mesh>
+                    <uri>model://kinect/meshes/kinect.dae</uri>
+                  </mesh>
+                </geometry>
+              </visual>
+              <sensor name="camera" type="depth">
+                <plugin name="camera_plugin" filename="libgazebo_ros_openni_kinect.so">
+                  <baseline>0.2</baseline>
+                  <alwaysOn>true</alwaysOn>
+                  <!-- Keep this zero, update_rate in the parent <sensor> tag
+                    will control the frame rate. -->
+                  <updateRate>0.0</updateRate>
+                  <cameraName>camera2_ir</cameraName>
+                  <imageTopicName>/camera2/color/image_raw</imageTopicName>
+                  <cameraInfoTopicName>/camera2/color/camera_info</cameraInfoTopicName>
+                  <depthImageTopicName>/camera2/depth/image_raw</depthImageTopicName>
+                  <depthImageCameraInfoTopicName>/camera2/depth/camera_info</depthImageCameraInfoTopicName>
+                  <pointCloudTopicName>/camera2/depth/points</pointCloudTopicName>
+                  <frameName>camera2_link</frameName>
+                  <pointCloudCutoff>0.5</pointCloudCutoff>
+                  <pointCloudCutoffMax>3000.0</pointCloudCutoffMax>
+                  <distortionK1>0</distortionK1>
+                  <distortionK2>0</distortionK2>
+                  <distortionK3>0</distortionK3>
+                  <distortionT1>0</distortionT1>
+                  <distortionT2>0</distortionT2>
+                  <CxPrime>0</CxPrime>
+                  <Cx>0</Cx>
+                  <Cy>0</Cy>
+                  <focalLength>0</focalLength>
+                  <hackBaseline>0</hackBaseline>
+                </plugin>
+                <update_rate>20</update_rate>
+                <camera>
+                  <horizontal_fov>1.047198</horizontal_fov>
+                  <image>
+                    <width>640</width>
+                    <height>480</height>
+                    <format>R8G8B8</format>
+                  </image>
+                  <clip>
+                    <near>0.05</near>
+                    <far>3000</far>
+                  </clip>
+                </camera>
+              </sensor>
+            </link>
+        </model>
+        
+        
+
+          
+
+      
+
+        
+      <!-- <model name="kinect3">
+          <static>true</static>
+            <pose>-3.786032 8.968347 16.5 0 0 0</pose>
+            <link name="kinect3_link">
+              <inertial>
+                <mass>0.1</mass>
+              </inertial> -->
+              <!-- <collision name="collision">
+                <geometry>
+                  <box>
+                    <size>0.073000 0.276000 0.072000</size>
+                  </box>
+                </geometry>
+              </collision> -->
+              <!-- <visual name="visual">
+                <geometry>
+                  <mesh>
+                    <uri>model://kinect/meshes/kinect.dae</uri>
+                  </mesh>
+                </geometry>
+              </visual>
+              <sensor type="gpu_ray" name="head_hokuyo_sensor">
+                <pose>0 0 0 0 0 0</pose>
+                <visualize>true</visualize>
+                <update_rate>40</update_rate>
+                <ray>
+                  <scan>
+                    <horizontal>
+                      <samples>720</samples>
+                      <resolution>1</resolution>
+                      <min_angle>-1.570796</min_angle>
+                      <max_angle>1.570796</max_angle>
+                    </horizontal>
+                  </scan>
+                  <range>
+                    <min>0.10</min>
+                    <max>30.0</max>
+                    <resolution>0.01</resolution>
+                  </range>
+                  <noise>
+                    <type>gaussian</type> -->
+                    <!-- Noise parameters based on published spec for Hokuyo laser
+                        achieving "+-30mm" accuracy at range < 10m.  A mean of 0.0m and
+                        stddev of 0.01m will put 99.7% of samples within 0.03m of the true
+                        reading. -->
+                    <!-- <mean>0.0</mean>
+                    <stddev>0.01</stddev>
+                  </noise>
+                </ray>
+                <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_gpu_laser.so">
+                  <topicName>/rrbot/laser/scan</topicName>
+                  <frameName>hokuyo_link</frameName>
+                </plugin>
+              </sensor>
+            </link> -->
+        <!-- </model> -->
+  </world>
+</sdf>
