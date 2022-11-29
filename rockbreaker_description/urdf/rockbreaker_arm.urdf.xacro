@@ -38,7 +38,6 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <!--<mesh filename = "file:///home/kyungki/workspace/catkin_ws/src/velodyne_simulator/velodyne_description/meshes/excavator-1.dae"/>-->
         <mesh filename="package://rockbreaker_arm_simulator/rockbreaker_description/meshes/basefija.dae" scale="1 1 1"/>
       </geometry>
     </visual>
