@@ -112,7 +112,7 @@
             <pose>0 0 0 0 -0 0</pose>
             <geometry>
               <mesh>
-                <uri>/home/brayan/catkin_ws/models/platform.stl</uri>
+                <uri>model://Platform/platform.stl</uri>
                 <scale>1 1 1</scale>
               </mesh>
             </geometry>
@@ -135,7 +135,7 @@
             <pose>0 0 0 0 -0 0</pose>
             <geometry>
               <mesh>
-                <uri>/home/brayan/catkin_ws/models/platform.stl</uri>
+                <uri>model://Platform/platform.stl</uri>
                 <scale>1 1 1</scale>
               </mesh>
             </geometry>
@@ -214,7 +214,7 @@
             <pose>0 0 0 0 -0 0</pose>
             <geometry>
               <mesh>
-                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <uri>model://Barandas/baranda.stl</uri>
                 <scale>1 1 1</scale>
               </mesh>
             </geometry>
@@ -237,7 +237,7 @@
             <pose>0 0 0 0 -0 0</pose>
             <geometry>
               <mesh>
-                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <uri>model://Barandas/baranda.stl</uri>
                 <scale>1 1 1</scale>
               </mesh>
             </geometry>
@@ -316,7 +316,7 @@
             <pose>0 0 0 0 -0 0</pose>
             <geometry>
               <mesh>
-                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <uri>model://Barandas/baranda.stl</uri>
                 <scale>1 1 1</scale>
               </mesh>
             </geometry>
@@ -339,7 +339,7 @@
             <pose>0 0 0 0 -0 0</pose>
             <geometry>
               <mesh>
-                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <uri>model://Barandas/baranda.stl</uri>
                 <scale>1 1 1</scale>
               </mesh>
             </geometry>
@@ -418,7 +418,7 @@
             <pose>0 0 0 0 -0 0</pose>
             <geometry>
               <mesh>
-                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <uri>model://Barandas/baranda.stl</uri>
                 <scale>1 1 1</scale>
               </mesh>
             </geometry>
@@ -441,7 +441,7 @@
             <pose>0 0 0 0 -0 0</pose>
             <geometry>
               <mesh>
-                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <uri>model://Barandas/baranda.stl</uri>
                 <scale>1 1 1</scale>
               </mesh>
             </geometry>
@@ -520,7 +520,7 @@
             <pose>0 0 0 0 -0 0</pose>
             <geometry>
               <mesh>
-                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <uri>model://Barandas/baranda.stl</uri>
                 <scale>1 1 1</scale>
               </mesh>
             </geometry>
@@ -543,7 +543,7 @@
             <pose>0 0 0 0 -0 0</pose>
             <geometry>
               <mesh>
-                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <uri>model://Barandas/baranda.stl</uri>
                 <scale>1 1 1</scale>
               </mesh>
             </geometry>
@@ -622,7 +622,7 @@
             <pose>0 0 0 0 -0 0</pose>
             <geometry>
               <mesh>
-                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <uri>model://Barandas/baranda.stl</uri>
                 <scale>1 1 1</scale>
               </mesh>
             </geometry>
@@ -645,7 +645,7 @@
             <pose>0 0 0 0 -0 0</pose>
             <geometry>
               <mesh>
-                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <uri>model://Barandas/baranda.stl</uri>
                 <scale>1 1 1</scale>
               </mesh>
             </geometry>
@@ -724,7 +724,7 @@
             <pose>0 0 0 0 -0 0</pose>
             <geometry>
               <mesh>
-                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <uri>model://Barandas/baranda.stl</uri>
                 <scale>1 1 1</scale>
               </mesh>
             </geometry>
@@ -747,7 +747,7 @@
             <pose>0 0 0 0 -0 0</pose>
             <geometry>
               <mesh>
-                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <uri>model://Barandas/baranda.stl</uri>
                 <scale>1 1 1</scale>
               </mesh>
             </geometry>
@@ -826,7 +826,7 @@
             <pose>0 0 0 0 -0 0</pose>
             <geometry>
               <mesh>
-                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <uri>model://Barandas/baranda.stl</uri>
                 <scale>1 1 1</scale>
               </mesh>
             </geometry>
@@ -849,7 +849,7 @@
             <pose>0 0 0 0 -0 0</pose>
             <geometry>
               <mesh>
-                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <uri>model://Barandas/baranda.stl</uri>
                 <scale>1 1 1</scale>
               </mesh>
             </geometry>
@@ -928,7 +928,7 @@
             <pose>0 0 0 0 -0 0</pose>
             <geometry>
               <mesh>
-                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <uri>model://Barandas/baranda.stl</uri>
                 <scale>1 1 1</scale>
               </mesh>
             </geometry>
@@ -951,7 +951,7 @@
             <pose>0 0 0 0 -0 0</pose>
             <geometry>
               <mesh>
-                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <uri>model://Barandas/baranda.stl</uri>
                 <scale>1 1 1</scale>
               </mesh>
             </geometry>
@@ -1030,7 +1030,7 @@
             <pose>0 0 0 0 -0 0</pose>
             <geometry>
               <mesh>
-                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <uri>model://Barandas/baranda.stl</uri>
                 <scale>1 1 1</scale>
               </mesh>
             </geometry>
@@ -1053,7 +1053,7 @@
             <pose>0 0 0 0 -0 0</pose>
             <geometry>
               <mesh>
-                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <uri>model://Barandas/baranda.stl</uri>
                 <scale>1 1 1</scale>
               </mesh>
             </geometry>
@@ -1132,7 +1132,7 @@
             <pose>0 0 0 0 -0 0</pose>
             <geometry>
               <mesh>
-                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <uri>model://Barandas/baranda.stl</uri>
                 <scale>1 1 1</scale>
               </mesh>
             </geometry>
@@ -1155,7 +1155,7 @@
             <pose>0 0 0 0 -0 0</pose>
             <geometry>
               <mesh>
-                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <uri>model://Barandas/baranda.stl</uri>
                 <scale>1 1 1</scale>
               </mesh>
             </geometry>
@@ -1234,7 +1234,7 @@
             <pose>0 0 0 0 -0 0</pose>
             <geometry>
               <mesh>
-                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <uri>model://Barandas/baranda.stl</uri>
                 <scale>1 1 1</scale>
               </mesh>
             </geometry>
@@ -1257,7 +1257,7 @@
             <pose>0 0 0 0 -0 0</pose>
             <geometry>
               <mesh>
-                <uri>/media/brayan/brayan/baranda.stl</uri>
+                <uri>model://Barandas/baranda.stl</uri>
                 <scale>1 1 1</scale>
               </mesh>
             </geometry>
@@ -1331,7 +1331,7 @@
             <pose>0 0 0 0 -0 0</pose>
             <geometry>
               <mesh>
-                <uri>/media/brayan/brayan/Containers.stl</uri>
+                <uri>model://Containers/Containers.stl</uri>
                 <scale>1 1 1</scale>
               </mesh>
             </geometry>
@@ -1352,7 +1352,7 @@
             <pose>0 0 0 0 -0 0</pose>
             <geometry>
               <mesh>
-                <uri>/media/brayan/brayan/Containers.stl</uri>
+                <uri>model://Containers/Containers.stl</uri>
                 <scale>1 1 1</scale>
               </mesh>
             </geometry>
@@ -1447,7 +1447,7 @@
             </geometry>
             <material>
               <script>
-                <uri>/home/brayan/catkin_ws/src/WorldMine/ground/my_ground_plane.material</uri>
+                <uri>/home/brayan/catkin_ws/src/rockbreaker_arm_simulator/rockbreaker_arm_gazebo/models/ground/my_ground_plane.material</uri>
                 <name>MyGroundPlane/Image</name>
               </script>
             </material>
@@ -1478,7 +1478,7 @@
             <pose>0 0 0 0 -0 0</pose>
             <geometry>
               <mesh>
-                <uri>/media/brayan/brayan/Iluminaria.stl</uri>
+                <uri>model://Postes/Iluminaria.stl</uri>
                 <scale>1 1 1</scale>
               </mesh>
             </geometry>
@@ -1499,7 +1499,7 @@
             <pose>0 0 0 0 -0 0</pose>
             <geometry>
               <mesh>
-                <uri>/media/brayan/brayan/Iluminaria.stl</uri>
+                <uri>model://Postes/Iluminaria.stl</uri>
                 <scale>1 1 1</scale>
               </mesh>
             </geometry>
@@ -1578,7 +1578,7 @@
             <pose>0 0 0 0 -0 0</pose>
             <geometry>
               <mesh>
-                <uri>/media/brayan/brayan/Iluminaria.stl</uri>
+                <uri>model://Postes/Iluminaria.stl</uri>
                 <scale>1 1 1</scale>
               </mesh>
             </geometry>
@@ -1599,7 +1599,7 @@
             <pose>0 0 0 0 -0 0</pose>
             <geometry>
               <mesh>
-                <uri>/media/brayan/brayan/Iluminaria.stl</uri>
+                <uri>model://Postes/Iluminaria.stl</uri>
                 <scale>1 1 1</scale>
               </mesh>
             </geometry>
@@ -1678,7 +1678,7 @@
             <pose>0 0 0 0 -0 0</pose>
             <geometry>
               <mesh>
-                <uri>/media/brayan/brayan/Iluminaria.stl</uri>
+                <uri>model://Postes/Iluminaria.stl</uri>
                 <scale>1 1 1</scale>
               </mesh>
             </geometry>
@@ -1699,7 +1699,7 @@
             <pose>0 0 0 0 -0 0</pose>
             <geometry>
               <mesh>
-                <uri>/media/brayan/brayan/Iluminaria.stl</uri>
+                <uri>model://Postes/Iluminaria.stl</uri>
                 <scale>1 1 1</scale>
               </mesh>
             </geometry>
@@ -1778,7 +1778,7 @@
             <pose>0 0 0 0 -0 0</pose>
             <geometry>
               <mesh>
-                <uri>/media/brayan/brayan/Iluminaria.stl</uri>
+                <uri>model://Postes/Iluminaria.stl</uri>
                 <scale>1 1 1</scale>
               </mesh>
             </geometry>
@@ -1799,7 +1799,7 @@
             <pose>0 0 0 0 -0 0</pose>
             <geometry>
               <mesh>
-                <uri>/media/brayan/brayan/Iluminaria.stl</uri>
+                <uri>model://Postes/Iluminaria.stl</uri>
                 <scale>1 1 1</scale>
               </mesh>
             </geometry>
@@ -1877,7 +1877,7 @@
             <pose>0 0 0 0 -0 0</pose>
             <geometry>
               <mesh>
-                <uri>/media/brayan/brayan/truck.stl</uri>
+                <uri>model://Truck/truck.stl</uri>
                 <scale>1 1 1</scale>
               </mesh>
             </geometry>
@@ -1898,7 +1898,7 @@
             <pose>0 0 0 0 -0 0</pose>
             <geometry>
               <mesh>
-                <uri>/media/brayan/brayan/truck.stl</uri>
+                <uri>model://Truck/truck.stl</uri>
                 <scale>1 1 1</scale>
               </mesh>
             </geometry>
@@ -2288,7 +2288,7 @@
                   <pointCloudTopicName>/camera2/depth/points</pointCloudTopicName>
                   <frameName>camera2_link</frameName>
                   <pointCloudCutoff>0.5</pointCloudCutoff>
-                  <pointCloudCutoffMax>3000.0</pointCloudCutoffMax>
+                  <pointCloudCutoffMax>30.0</pointCloudCutoffMax>
                   <distortionK1>0</distortionK1>
                   <distortionK2>0</distortionK2>
                   <distortionK3>0</distortionK3>
@@ -2310,75 +2310,12 @@
                   </image>
                   <clip>
                     <near>0.05</near>
-                    <far>3000</far>
+                    <far>30</far>
                   </clip>
                 </camera>
               </sensor>
             </link>
         </model>
         
-        
-
-          
-
-      
-
-        
-      <!-- <model name="kinect3">
-          <static>true</static>
-            <pose>-3.786032 8.968347 16.5 0 0 0</pose>
-            <link name="kinect3_link">
-              <inertial>
-                <mass>0.1</mass>
-              </inertial> -->
-              <!-- <collision name="collision">
-                <geometry>
-                  <box>
-                    <size>0.073000 0.276000 0.072000</size>
-                  </box>
-                </geometry>
-              </collision> -->
-              <!-- <visual name="visual">
-                <geometry>
-                  <mesh>
-                    <uri>model://kinect/meshes/kinect.dae</uri>
-                  </mesh>
-                </geometry>
-              </visual>
-              <sensor type="gpu_ray" name="head_hokuyo_sensor">
-                <pose>0 0 0 0 0 0</pose>
-                <visualize>true</visualize>
-                <update_rate>40</update_rate>
-                <ray>
-                  <scan>
-                    <horizontal>
-                      <samples>720</samples>
-                      <resolution>1</resolution>
-                      <min_angle>-1.570796</min_angle>
-                      <max_angle>1.570796</max_angle>
-                    </horizontal>
-                  </scan>
-                  <range>
-                    <min>0.10</min>
-                    <max>30.0</max>
-                    <resolution>0.01</resolution>
-                  </range>
-                  <noise>
-                    <type>gaussian</type> -->
-                    <!-- Noise parameters based on published spec for Hokuyo laser
-                        achieving "+-30mm" accuracy at range < 10m.  A mean of 0.0m and
-                        stddev of 0.01m will put 99.7% of samples within 0.03m of the true
-                        reading. -->
-                    <!-- <mean>0.0</mean>
-                    <stddev>0.01</stddev>
-                  </noise>
-                </ray>
-                <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_gpu_laser.so">
-                  <topicName>/rrbot/laser/scan</topicName>
-                  <frameName>hokuyo_link</frameName>
-                </plugin>
-              </sensor>
-            </link> -->
-        <!-- </model> -->
   </world>
 </sdf>

@@ -7,7 +7,7 @@
   <arg name="debug" default="false"/>
   <arg name="verbose" default="false"/>
   <arg name="world_name" default="$(find rockbreaker_arm_simulator)/rockbreaker_arm_gazebo/worlds/rockbreaker_arm_world"/>
-  <env name="GAZEBO_MODEL_PATH" value="$(find rockbreaker_arm_simulator)/rockbreaker_arm_gazebo/models:$(find ainstein_radar_gazebo_plugins)/models:$(optenv GAZEBO_MODEL_PATH)"/>
+  <env name="GAZEBO_MODEL_PATH" value="$(find rockbreaker_arm_simulator)/rockbreaker_arm_gazebo/models:$(optenv GAZEBO_MODEL_PATH)"/>
 
 
   <!-- Start gazebo and load the world -->
@@ -21,6 +21,9 @@
     <arg name="world_name" value="$(arg world_name)"/>
   </include>
 
+  <!-- Load gazebo controller configurations
+  <rosparam file="$(find rockbreaker_arm_simulator)/rockbreaker_arm_control/cfg/gazebo_control.yaml" command="load" /> -->
+
 
   <!-- Spawn the example robot -->
   <arg name="gpu" default="true"/>
@@ -29,16 +32,34 @@
   <node pkg="gazebo_ros" type="spawn_model" name="spawn_model" args="-urdf -param /robot_description -model rockbreaker_arm"/>
   
     <!-- send fake joint values -->
-  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+  <!-- <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
   <param name="use_gui" value="true"/>
-  </node>
+  </node> -->
+
+
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <!-- <rosparam file="$(find rockbreaker_planning_moveit)/config/ros_controllers.yaml" command="load"/> -->
+
+    <!-- Load joint controller configurations from YAML file to parameter server
+  <rosparam file="$(find prueba3)/config/ros_controllers.yaml" command="load"/> -->
+
+  <!-- load the controllers -->
+  <!-- <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+	output="screen" args= "joint_state_controller arm_controller "/> -->
+
+  <!--convert joint states to TF transforms for rviz, etc -->
+  <!-- <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
+    <remap from="/joint_states" to="/joint_states" />
+  </node> -->
+
+
 
  <!-- <include file="$(find rockbreaker_arm_simulator)/rockbreaker_arm_control/launch/rockbreaker_control.launch"/> -->
   <node name="tf_camera1_frame" pkg="tf2_ros" type="static_transform_publisher" args="-1.556211 -5.006576 19 -1 0 -1.57 world camera1_link"/>
   <node name="tf_lidar_frame" pkg="tf2_ros" type="static_transform_publisher" args="-3.786032 8.968347 16.5 0 0 0 world hokuyo_link"/>
   <node name="tf_camera2_frame" pkg="tf2_ros" type="static_transform_publisher" args="10.147451 8.166531 19 2.05 0 -1.57 world camera2_link"/>
   <node name="tf_centralcontrol_frame" pkg="tf2_ros" type="static_transform_publisher" args="-7.345007 -5.28207 15.947100 0.0 0.0 0.0 world container"/>
-  <node name="tf_radar_frame" pkg="tf2_ros" type="static_transform_publisher" args="-7.345007 -5.28207 15.947100 0.0 0.0 16.0 world radar_link"/>
-  <node name="tf_radar_frame1" pkg="tf2_ros" type="static_transform_publisher" args="-7.345007 -5.28207 15.947100 1.0 1.0 16.0 world radar_link1"/>
+  <!-- <node name="tf_radar_frame" pkg="tf2_ros" type="static_transform_publisher" args="-7.345007 -5.28207 15.947100 0.0 0.0 16.0 world radar_link"/> -->
+  <!-- <node name="tf_radar_frame1" pkg="tf2_ros" type="static_transform_publisher" args="-7.345007 -5.28207 15.947100 1.0 1.0 16.0 world radar_link1"/> -->
   
 </launch>

@@ -3,7 +3,7 @@ project(rockbreaker_arm_simulator)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++14)
-set(CMAKE_CXX_STANDARD 17)
+# set(CMAKE_CXX_STANDARD 17)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
@@ -12,9 +12,11 @@ find_package(catkin REQUIRED COMPONENTS
   gazebo_ros
   roscpp
   rospy
-  ainstein_radar_msgs
+  # ainstein_radar_msgs
 )
 find_package (gazebo REQUIRED)
+
+
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -207,7 +209,7 @@ include_directories( ${catkin_INCLUDE_DIRS}
   ${Boost_INCLUDE_DIR}
   ${GAZEBO_INCLUDE_DIRS}
   )
-add_library(${PROJECT_NAME} src/radar_plugin.cpp)
+# add_library(${PROJECT_NAME} src/radar_plugin.cpp)
 
 
 #############

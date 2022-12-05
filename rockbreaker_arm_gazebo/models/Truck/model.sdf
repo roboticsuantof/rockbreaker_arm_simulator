@@ -1,0 +1,28 @@
+<?xml version='1.0'?>
+<sdf version="1.7">
+  <model name="truck">
+    <static>true</static>
+    <link name="truck_link">
+      <collision name="truck_collision">
+        <geometry>
+          <mesh>
+            <uri>/home/brayan/catkin_ws/src/WorldMine/Truck/truck.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="truck_visual">
+        <geometry>
+          <mesh>
+            <uri>/home/brayan/catkin_ws/src/WorldMine/Truck/truck.stl</uri>
+          </mesh>
+         </geometry>
+         <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Yellow</name>
+          </script>
+        </material>
+       </visual>
+    </link>
+  </model>
+</sdf>

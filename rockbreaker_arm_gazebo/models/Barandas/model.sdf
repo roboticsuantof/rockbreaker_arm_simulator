@@ -1,0 +1,28 @@
+<?xml version='1.0'?>
+<sdf version="1.7">
+  <model name="baranda">
+    <static>true</static>
+    <link name="baranda_link">
+      <collision name="baranda_collision">
+        <geometry>
+          <mesh>
+            <uri>/home/brayan/catkin_ws/src/WorldMine/Barandas/baranda.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="containers_visual">
+        <geometry>
+          <mesh>
+            <uri>/home/brayan/catkin_ws/src/WorldMine/Barandas/baranda.stl</uri>
+          </mesh>
+         </geometry>
+         <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Yellow</name>
+          </script>
+        </material>
+       </visual>
+    </link>
+  </model>
+</sdf>

@@ -1,0 +1,31 @@
+gazebo_ros_control:
+  pid_gains:
+    joint_base_rockbreaker:
+      p: 200.0
+      i: 50.05
+      d: 0.0001
+      i_clamp: 1
+      publish_state: true
+
+    joint_brazoa:
+      p: 200.0
+      i: 50.05
+      d: 0.0001
+      i_clamp: 1
+      publish_state: true
+
+    joint_brazob:
+      p: 200.0
+      i: 50.1
+      d: 0.0
+      i_clamp: 0.2
+      antiwindup: false
+      publish_state: true
+    
+    joint_hammer:
+      p: 200.0
+      i: 50.1
+      d: 0.0
+      i_clamp: 0.2
+      antiwindup: false
+      publish_state: true

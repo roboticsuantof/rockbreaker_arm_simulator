@@ -1,0 +1,28 @@
+<?xml version='1.0'?>
+<sdf version="1.7">
+  <model name="poste">
+    <static>true</static>
+    <link name="poste_link">
+      <collision name="poste_collision">
+        <geometry>
+          <mesh>
+            <uri>/home/brayan/catkin_ws/src/WorldMine/Postes/poste.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="poste_visual">
+        <geometry>
+          <mesh>
+            <uri>/home/brayan/catkin_ws/src/WorldMine/Postes/poste.stl</uri>
+          </mesh>
+         </geometry>
+         <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/White</name>
+          </script>
+        </material>
+       </visual>
+    </link>
+  </model>
+</sdf>

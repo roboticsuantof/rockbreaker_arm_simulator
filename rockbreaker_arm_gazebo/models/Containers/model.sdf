@@ -1,0 +1,28 @@
+<?xml version='1.0'?>
+<sdf version="1.7">
+  <model name="containers">
+    <static>true</static>
+    <link name="containers_link">
+      <collision name="containers_collision">
+        <geometry>
+          <mesh>
+            <uri>/home/brayan/catkin_ws/src/WorldMine/Containers/Containers.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="containers_visual">
+        <geometry>
+          <mesh>
+            <uri>/home/brayan/catkin_ws/src/WorldMine/Containers/Containers.stl</uri>
+          </mesh>
+         </geometry>
+         <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Blue</name>
+          </script>
+        </material>
+       </visual>
+    </link>
+  </model>
+</sdf>
