@@ -56,10 +56,9 @@
 
  <!-- <include file="$(find rockbreaker_arm_simulator)/rockbreaker_arm_control/launch/rockbreaker_control.launch"/> -->
   <node name="tf_camera1_frame" pkg="tf2_ros" type="static_transform_publisher" args="-1.556211 -5.006576 19 -1 0 -1.57 world camera1_link"/>
-  <node name="tf_lidar_frame" pkg="tf2_ros" type="static_transform_publisher" args="-3.786032 8.968347 16.5 0 0 0 world hokuyo_link"/>
+  <node name="tf_lidar2_frame" pkg="tf2_ros" type="static_transform_publisher" args="-1.597384 -5.032115 17 -1,616972 0 0 world os0_sensor2"/>
   <node name="tf_camera2_frame" pkg="tf2_ros" type="static_transform_publisher" args="10.147451 8.166531 19 2.05 0 -1.57 world camera2_link"/>
   <node name="tf_centralcontrol_frame" pkg="tf2_ros" type="static_transform_publisher" args="-7.345007 -5.28207 15.947100 0.0 0.0 0.0 world container"/>
-  <!-- <node name="tf_radar_frame" pkg="tf2_ros" type="static_transform_publisher" args="-7.345007 -5.28207 15.947100 0.0 0.0 16.0 world radar_link"/> -->
-  <!-- <node name="tf_radar_frame1" pkg="tf2_ros" type="static_transform_publisher" args="-7.345007 -5.28207 15.947100 1.0 1.0 16.0 world radar_link1"/> -->
-  
+  <node name="tf_lidar1_frame" pkg="tf2_ros" type="static_transform_publisher" args="10.147451 8.166531 17 -2.663270 0 0 world os0_sensor"/>
+ <node name="tf_lidar3_frame" pkg="tf2_ros" type="static_transform_publisher" args="-1.792569 8.118245 16.748917 0 0 0 world os0_sensor3"/>
 </launch>

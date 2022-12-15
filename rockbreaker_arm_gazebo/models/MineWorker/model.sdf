@@ -1,0 +1,28 @@
+<?xml version='1.0'?>
+<sdf version="1.7">
+  <model name="worker">
+    <static>true</static>
+    <link name="worker_link">
+      <collision name="worker_collision">
+        <geometry>
+          <mesh>
+            <uri>/home/brayan/catkin_ws/src/rockbreaker_arm_simulator/rockbreaker_arm_gazebo/models/MineWorker/MineWorker.dae</uri>
+          </mesh>
+        </geometry> 
+      </collision>
+      <visual name="worker_visual">
+        <geometry>
+          <mesh>
+            <uri>/home/brayan/catkin_ws/src/rockbreaker_arm_simulator/rockbreaker_arm_gazebo/models/MineWorker/MineWorker.dae</uri>
+          </mesh>
+         </geometry>
+         <material>|
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Orange</name>
+          </script>
+        </material>
+       </visual>
+    </link>
+  </model>
+</sdf>

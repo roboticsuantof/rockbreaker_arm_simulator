@@ -1,0 +1,28 @@
+<?xml version='1.0'?>
+<sdf version="1.7">
+  <model name="mineral">
+    <static>true</static>
+    <link name="mineral_link">
+      <collision name="mineral_collision">
+        <geometry>
+          <mesh>
+            <uri>/home/brayan/catkin_ws/src/rockbreaker_arm_simulator/rockbreaker_arm_gazebo/models/Mineral/mineral.dae</uri>
+          </mesh>
+        </geometry> 
+      </collision>
+      <visual name="mineral_visual">
+        <geometry>
+          <mesh>
+            <uri>/home/brayan/catkin_ws/src/rockbreaker_arm_simulator/rockbreaker_arm_gazebo/models/Mineral/mineral.dae</uri>
+          </mesh> 
+         </geometry>
+         <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Grey</name>
+          </script>
+        </material>
+       </visual>
+    </link>
+  </model>
+</sdf>

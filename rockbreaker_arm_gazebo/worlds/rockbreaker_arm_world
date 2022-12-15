@@ -1858,7 +1858,7 @@
         <allow_auto_disable>1</allow_auto_disable>
         <pose>5.59851 15.2063 2.80499 0 -0 -2.45231</pose>
       </model>
-      <model name='truck'>
+      <!-- <model name='truck'>
         <static>1</static>
         <link name='link_4'>
           <inertial>
@@ -1955,7 +1955,7 @@
         <static>0</static>
         <allow_auto_disable>1</allow_auto_disable>
         <pose>-5.29016 13.9739 -0.573577 -0.129376 -0 -1.60694</pose>
-      </model>
+      </model> -->
       <static>0</static>
       <allow_auto_disable>1</allow_auto_disable>
       <pose>3.37501 -8.19596 15.3471 0 -0 0</pose>
@@ -2166,7 +2166,7 @@
             <wrench>0 0 0 0 -0 0</wrench>
           </link>
         </model>
-        <model name='truck'>
+        <!-- <model name='truck'>
           <pose>-1.91515 5.77794 14.7735 -0.129376 -0 -1.60694</pose>
           <scale>1 1 1</scale>
           <link name='link_4'>
@@ -2175,7 +2175,7 @@
             <acceleration>0 0 0 0 -0 0</acceleration>
             <wrench>0 0 0 0 -0 0</wrench>
           </link>
-        </model>
+        </model> -->
       </model>
       <light name='sun'>
         <pose>0 0 10 0 -0 0</pose>
@@ -2224,7 +2224,7 @@
                 <pointCloudTopicName>/camera1/depth/points</pointCloudTopicName>
                 <frameName>camera1_link</frameName>
                 <pointCloudCutoff>0.5</pointCloudCutoff>
-                <pointCloudCutoffMax>25.0</pointCloudCutoffMax>
+                <pointCloudCutoffMax>30.0</pointCloudCutoffMax>
                 <distortionK1>0</distortionK1>
                 <distortionK2>0</distortionK2>
                 <distortionK3>0</distortionK3>
@@ -2317,5 +2317,173 @@
             </link>
         </model>
         
+        <model name="lidar1">
+          <static>true</static>
+            <pose>10.147451 8.166531 17 0 0 -2.663270</pose>
+            <link name="link_lidar">
+              <inertial>
+                <mass>0.1</mass>
+              </inertial>
+              <collision name="collision">
+                <geometry>
+                  <box>
+                    <size>0.073000 0.276000 0.072000</size>
+                  </box>
+                </geometry>
+              </collision>
+              <visual name="visual">
+                <geometry>
+                  <mesh>
+                    <uri>model://lidar_description/meshes/Ouster/ouster.dae</uri>
+                  </mesh>
+                </geometry>
+              </visual>
+                <sensor type="ray" name="lidar1">
+                      <pose>0 0 0 0 0 0</pose>
+                      <visualize>false</visualize>
+                      <update_rate>10</update_rate>
+                      <ray>
+                        <scan>
+                          <horizontal>
+                            <samples>150</samples>
+                            <resolution>1</resolution>
+                            <min_angle>-3.14</min_angle>
+                            <max_angle>3.14</max_angle>
+                          </horizontal>
+                          <vertical>
+                            <samples>128</samples>
+                            <resolution>1</resolution>
+                            <min_angle>-0.785</min_angle>
+                            <max_angle>0.785</max_angle>
+                          </vertical>
+                        </scan>
+                        <range>
+                          <min>0.225</min>
+                          <max>50</max>
+                          <resolution>0.1</resolution>
+                        </range>
+                      </ray>
+                      <plugin name="gazebo_ros_laser_controller" filename="libgazebo_ros_lidar.so"> -->
+                        <topicName>/os0_cloud_node/points</topicName>
+                        <frameName>os0_sensor</frameName>
+                        <min_range>0.225</min_range>
+                        <max_range>50</max_range>
+                        <gaussianNoise>0.008</gaussianNoise>
+                      </plugin> 
+                    </sensor>
+              </link>
+          </model>
+          <model name="lidar2">
+            <static>true</static>
+              <pose>-1.597384 -5.032115 17 0 0 -1,616972</pose>
+              <link name="link_lidar">
+                <inertial>
+                  <mass>0.1</mass>
+                </inertial>
+                <collision name="collision">
+                  <geometry>
+                    <box>
+                      <size>0.073000 0.276000 0.072000</size>
+                    </box>
+                  </geometry>
+                </collision>
+                <visual name="visual">
+                  <geometry>
+                    <mesh>
+                      <uri>model://lidar_description/meshes/Ouster/ouster.dae</uri>
+                    </mesh>
+                  </geometry>
+                </visual>
+                  <sensor type="ray" name="lidar2">
+                        <pose>0 0 0 0 0 0</pose>
+                        <visualize>false</visualize>
+                        <update_rate>10</update_rate>
+                        <ray>
+                          <scan>
+                            <horizontal>
+                              <samples>150</samples>
+                              <resolution>1</resolution>
+                              <min_angle>-3.14</min_angle>
+                              <max_angle>3.14</max_angle>
+                            </horizontal>
+                            <vertical>
+                              <samples>128</samples>
+                              <resolution>1</resolution>
+                              <min_angle>-0.785</min_angle>
+                              <max_angle>0.785</max_angle>
+                            </vertical>
+                          </scan>
+                          <range>
+                            <min>0.225</min>
+                            <max>50</max>
+                            <resolution>0.1</resolution>
+                          </range>
+                        </ray>
+                        <plugin name="gazebo_ros_laser_controller" filename="libgazebo_ros_lidar.so"> 
+                          <topicName>/os0_cloud_node/points2</topicName>
+                          <frameName>os0_sensor2</frameName>
+                          <min_range>0.225</min_range>
+                          <max_range>50</max_range>
+                          <gaussianNoise>0.008</gaussianNoise>
+                        </plugin> 
+                      </sensor>
+                </link>
+            </model>
+            <model name="lidar3">
+              <static>true</static>
+                <pose>-1.792569 8.118245 16.748917 0 0 0</pose>
+                <link name="link_lidar">
+                  <inertial>
+                    <mass>0.1</mass>
+                  </inertial>
+                  <collision name="collision">
+                    <geometry>
+                      <box>
+                        <size>0.073000 0.276000 0.072000</size>
+                      </box>
+                    </geometry>
+                  </collision>
+                  <visual name="visual">
+                    <geometry>
+                      <mesh>
+                        <uri>model://lidar_description/meshes/Ouster/ouster.dae</uri>
+                      </mesh>
+                    </geometry>
+                  </visual>
+                    <sensor type="ray" name="lidar3">
+                          <pose>0 0 0 0 0 0</pose>
+                          <visualize>false</visualize>
+                          <update_rate>10</update_rate>
+                          <ray>
+                            <scan>
+                              <horizontal>
+                                <samples>150</samples>
+                                <resolution>1</resolution>
+                                <min_angle>-3.14</min_angle>
+                                <max_angle>3.14</max_angle>
+                              </horizontal>
+                              <vertical>
+                                <samples>128</samples>
+                                <resolution>1</resolution>
+                                <min_angle>-0.785</min_angle>
+                                <max_angle>0.785</max_angle>
+                              </vertical>
+                            </scan>
+                            <range>
+                              <min>0.225</min>
+                              <max>50</max>
+                              <resolution>0.1</resolution>
+                            </range>
+                          </ray>
+                          <plugin name="gazebo_ros_laser_controller" filename="libgazebo_ros_lidar.so"> 
+                            <topicName>/os0_cloud_node/points3</topicName>
+                            <frameName>os0_sensor3</frameName>
+                            <min_range>0.225</min_range>
+                            <max_range>50</max_range>
+                            <gaussianNoise>0.008</gaussianNoise>
+                          </plugin> 
+                        </sensor>
+                  </link>
+              </model>
   </world>
 </sdf>
